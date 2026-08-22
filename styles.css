@@ -306,7 +306,7 @@ section {
   display: flex;
   gap: 28px;
   width: max-content;
-  animation: scrollMarquee 75s linear infinite;
+  animation: scrollMarquee 58s linear infinite;
   will-change: transform;
   user-select: none;
 }
@@ -1124,7 +1124,7 @@ html, body {
   .faq-list summary { padding: 16px 18px; font-size: 14.5px; }
   .faq-list .answer { padding: 0 18px 16px; font-size: 14px; }
   .marquee-card { flex: 0 0 250px; }
-  .marquee-track { gap: 18px; animation-duration: 60s; }
+  .marquee-track { gap: 18px; animation-duration: 48s; }
 }
 
 @media (max-width: 380px) {
