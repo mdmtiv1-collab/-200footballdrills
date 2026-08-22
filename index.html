@@ -6,12 +6,16 @@
   <title>+200 Football Drills Vault — Instant Access Practice App</title>
   <meta name="description" content="Access +200 complete American Football drills ready to apply on the field. Practice plans for QB, WR, DB, Linemen, Running Backs, and SAQ Conditioning." />
   
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
+  <!-- Preload Critical LCP Hero Image -->
+  <link rel="preload" as="image" href="images/hero_mockup.webp" type="image/webp" fetchpriority="high" />
+  
+  <!-- Preconnect Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
   
   <link rel="stylesheet" href="styles.css" />
+  <script src="script.js" defer></script>
 </head>
 <body>
 
@@ -32,7 +36,10 @@
 
       <!-- Visual Product Mockup -->
       <div class="hero-media">
-        <img src="images/hero_mockup.jpg" alt="+200 Football Drills Complete Bundle" class="hero-img" loading="eager" />
+        <picture>
+          <source srcset="images/hero_mockup.webp" type="image/webp" />
+          <img src="images/hero_mockup.jpg" alt="+200 Football Drills Complete Bundle" class="hero-img" width="820" height="820" fetchpriority="high" loading="eager" decoding="sync" />
+        </picture>
       </div>
 
       <!-- CTA Button Redirecting to Offer Section -->
@@ -62,42 +69,78 @@
             
             <!-- 6 Original Topic Cards in Exact Order -->
             <div class="marquee-card">
-              <img src="images/topic_1_qb.png" alt="Quarterback (QB) Drills" loading="eager" />
+              <picture>
+                <source srcset="images/topic_1_qb.webp" type="image/webp" />
+                <img src="images/topic_1_qb.png" alt="Quarterback (QB) Drills" width="310" height="420" loading="lazy" decoding="async" />
+              </picture>
             </div>
             <div class="marquee-card">
-              <img src="images/topic_2_wr.png" alt="Wide Receivers & Tight Ends Drills" loading="eager" />
+              <picture>
+                <source srcset="images/topic_2_wr.webp" type="image/webp" />
+                <img src="images/topic_2_wr.png" alt="Wide Receivers & Tight Ends Drills" width="310" height="420" loading="lazy" decoding="async" />
+              </picture>
             </div>
             <div class="marquee-card">
-              <img src="images/topic_3_db.png" alt="Defensive Backs & Linebackers Drills" loading="eager" />
+              <picture>
+                <source srcset="images/topic_3_db.webp" type="image/webp" />
+                <img src="images/topic_3_db.png" alt="Defensive Backs & Linebackers Drills" width="310" height="420" loading="lazy" decoding="async" />
+              </picture>
             </div>
             <div class="marquee-card">
-              <img src="images/topic_4_line.png" alt="Offensive & Defensive Line Drills" loading="eager" />
+              <picture>
+                <source srcset="images/topic_4_line.webp" type="image/webp" />
+                <img src="images/topic_4_line.png" alt="Offensive & Defensive Line Drills" width="310" height="420" loading="lazy" decoding="async" />
+              </picture>
             </div>
             <div class="marquee-card">
-              <img src="images/topic_5_rb.png" alt="Running Backs & Special Teams Drills" loading="eager" />
+              <picture>
+                <source srcset="images/topic_5_rb.webp" type="image/webp" />
+                <img src="images/topic_5_rb.png" alt="Running Backs & Special Teams Drills" width="310" height="420" loading="lazy" decoding="async" />
+              </picture>
             </div>
             <div class="marquee-card">
-              <img src="images/topic_6_saq.png" alt="Speed & Conditioning (SAQ) Drills" loading="eager" />
+              <picture>
+                <source srcset="images/topic_6_saq.webp" type="image/webp" />
+                <img src="images/topic_6_saq.png" alt="Speed & Conditioning (SAQ) Drills" width="310" height="420" loading="lazy" decoding="async" />
+              </picture>
             </div>
 
             <!-- Duplicated 6 Cards for 100% Seamless Infinite Loop -->
             <div class="marquee-card" aria-hidden="true">
-              <img src="images/topic_1_qb.png" alt="" loading="lazy" />
+              <picture>
+                <source srcset="images/topic_1_qb.webp" type="image/webp" />
+                <img src="images/topic_1_qb.png" alt="" width="310" height="420" loading="lazy" decoding="async" />
+              </picture>
             </div>
             <div class="marquee-card" aria-hidden="true">
-              <img src="images/topic_2_wr.png" alt="" loading="lazy" />
+              <picture>
+                <source srcset="images/topic_2_wr.webp" type="image/webp" />
+                <img src="images/topic_2_wr.png" alt="" width="310" height="420" loading="lazy" decoding="async" />
+              </picture>
             </div>
             <div class="marquee-card" aria-hidden="true">
-              <img src="images/topic_3_db.png" alt="" loading="lazy" />
+              <picture>
+                <source srcset="images/topic_3_db.webp" type="image/webp" />
+                <img src="images/topic_3_db.png" alt="" width="310" height="420" loading="lazy" decoding="async" />
+              </picture>
             </div>
             <div class="marquee-card" aria-hidden="true">
-              <img src="images/topic_4_line.png" alt="" loading="lazy" />
+              <picture>
+                <source srcset="images/topic_4_line.webp" type="image/webp" />
+                <img src="images/topic_4_line.png" alt="" width="310" height="420" loading="lazy" decoding="async" />
+              </picture>
             </div>
             <div class="marquee-card" aria-hidden="true">
-              <img src="images/topic_5_rb.png" alt="" loading="lazy" />
+              <picture>
+                <source srcset="images/topic_5_rb.webp" type="image/webp" />
+                <img src="images/topic_5_rb.png" alt="" width="310" height="420" loading="lazy" decoding="async" />
+              </picture>
             </div>
             <div class="marquee-card" aria-hidden="true">
-              <img src="images/topic_6_saq.png" alt="" loading="lazy" />
+              <picture>
+                <source srcset="images/topic_6_saq.webp" type="image/webp" />
+                <img src="images/topic_6_saq.png" alt="" width="310" height="420" loading="lazy" decoding="async" />
+              </picture>
             </div>
 
           </div>
@@ -168,7 +211,10 @@
         <!-- BONUS 1 -->
         <div class="bonus-card">
           <div class="bonus-img-container">
-            <img src="images/bonus_1_speed.jpg" alt="Bonus 1: Football Speed & Agility Workout Guide" class="bonus-img" loading="eager" />
+            <picture>
+              <source srcset="images/bonus_1_speed.webp" type="image/webp" />
+              <img src="images/bonus_1_speed.jpg" alt="Bonus 1: Football Speed & Agility Workout Guide" class="bonus-img" width="400" height="225" loading="lazy" decoding="async" />
+            </picture>
             <span class="bonus-tag">🎁 BONUS 1</span>
           </div>
           <div class="bonus-body">
@@ -183,7 +229,10 @@
         <!-- BONUS 2 -->
         <div class="bonus-card">
           <div class="bonus-img-container">
-            <img src="images/bonus_2_playbook.jpg" alt="Bonus 2: Essential Tactical Playbook (Offense & Defense)" class="bonus-img" loading="eager" />
+            <picture>
+              <source srcset="images/bonus_2_playbook.webp" type="image/webp" />
+              <img src="images/bonus_2_playbook.jpg" alt="Bonus 2: Essential Tactical Playbook (Offense & Defense)" class="bonus-img" width="400" height="225" loading="lazy" decoding="async" />
+            </picture>
             <span class="bonus-tag">🎁 BONUS 2</span>
           </div>
           <div class="bonus-body">
@@ -198,7 +247,10 @@
         <!-- BONUS 3 -->
         <div class="bonus-card">
           <div class="bonus-img-container">
-            <img src="images/bonus_3_planner.jpg" alt="Bonus 3: Weekly Practice Planning Template" class="bonus-img" loading="eager" />
+            <picture>
+              <source srcset="images/bonus_3_planner.webp" type="image/webp" />
+              <img src="images/bonus_3_planner.jpg" alt="Bonus 3: Weekly Practice Planning Template" class="bonus-img" width="400" height="225" loading="lazy" decoding="async" />
+            </picture>
             <span class="bonus-tag">🎁 BONUS 3</span>
           </div>
           <div class="bonus-body">
@@ -340,7 +392,10 @@
                 <h3>Drill 014: Pocket Reset & Quick Strike</h3>
               </div>
               <div class="card-diagram-img-wrap">
-                <img src="images/drill_014_qb.png" alt="Drill 014: Pocket Reset & Quick Strike" loading="eager" />
+                <picture>
+                  <source srcset="images/drill_014_qb.webp" type="image/webp" />
+                  <img src="images/drill_014_qb.png" alt="Drill 014: Pocket Reset & Quick Strike" width="540" height="300" loading="lazy" decoding="async" />
+                </picture>
               </div>
               <div class="card-diagram-caption">
                 <p><strong>Goal:</strong> Navigate interior pocket pressure, reset base footwork around edge rushers, and deliver a rapid, accurate strike to the receiver.</p>
@@ -354,7 +409,10 @@
                 <h3>Drill 089: Pedal, Plant & Track</h3>
               </div>
               <div class="card-diagram-img-wrap">
-                <img src="images/drill_089_db.png" alt="Drill 089: Pedal, Plant & Track" loading="eager" />
+                <picture>
+                  <source srcset="images/drill_089_db.webp" type="image/webp" />
+                  <img src="images/drill_089_db.png" alt="Drill 089: Pedal, Plant & Track" width="540" height="300" loading="lazy" decoding="async" />
+                </picture>
               </div>
               <div class="card-diagram-caption">
                 <p><strong>Goal:</strong> Master the fluid backpedal transition, execute a sharp T-step plant on the QB release, and make an explosive break to contest the ball.</p>
@@ -368,7 +426,10 @@
                 <h3>Drill 126: Mirror Set & Strike</h3>
               </div>
               <div class="card-diagram-img-wrap">
-                <img src="images/drill_126_ol.png" alt="Drill 126: Mirror Set & Strike" loading="eager" />
+                <picture>
+                  <source srcset="images/drill_126_ol.webp" type="image/webp" />
+                  <img src="images/drill_126_ol.png" alt="Drill 126: Mirror Set & Strike" width="540" height="300" loading="lazy" decoding="async" />
+                </picture>
               </div>
               <div class="card-diagram-caption">
                 <p><strong>Goal:</strong> Perfect kick-slide pass protection, maintain low leverage, and deliver explosive inside hand strikes within the contact window.</p>
@@ -382,7 +443,10 @@
                 <h3>Drill 158: One-Cut Lane Burst</h3>
               </div>
               <div class="card-diagram-img-wrap">
-                <img src="images/drill_158_rb.png" alt="Drill 158: One-Cut Lane Burst" loading="eager" />
+                <picture>
+                  <source srcset="images/drill_158_rb.webp" type="image/webp" />
+                  <img src="images/drill_158_rb.png" alt="Drill 158: One-Cut Lane Burst" width="540" height="300" loading="lazy" decoding="async" />
+                </picture>
               </div>
               <div class="card-diagram-caption">
                 <p><strong>Goal:</strong> Read defensive gap leverage, execute an aggressive one-cut move into the open running lane, and burst downhill with ball security.</p>
@@ -396,7 +460,10 @@
                 <h3>Drill 173: Ladder Burst to Weave</h3>
               </div>
               <div class="card-diagram-img-wrap">
-                <img src="images/drill_173_saq.png" alt="Drill 173: Ladder Burst to Weave" loading="eager" />
+                <picture>
+                  <source srcset="images/drill_173_saq.webp" type="image/webp" />
+                  <img src="images/drill_173_saq.png" alt="Drill 173: Ladder Burst to Weave" width="540" height="300" loading="lazy" decoding="async" />
+                </picture>
               </div>
               <div class="card-diagram-caption">
                 <p><strong>Goal:</strong> Build rapid foot frequency through the agility ladder, stay low through tight cone weave angles, and explode into full sprinting speed.</p>
@@ -410,7 +477,10 @@
                 <h3>Drill 014: Pocket Reset & Quick Strike</h3>
               </div>
               <div class="card-diagram-img-wrap">
-                <img src="images/drill_014_qb.png" alt="" loading="lazy" />
+                <picture>
+                  <source srcset="images/drill_014_qb.webp" type="image/webp" />
+                  <img src="images/drill_014_qb.png" alt="" width="540" height="300" loading="lazy" decoding="async" />
+                </picture>
               </div>
               <div class="card-diagram-caption">
                 <p><strong>Goal:</strong> Navigate interior pocket pressure, reset base footwork around edge rushers, and deliver a rapid, accurate strike to the receiver.</p>
@@ -423,7 +493,10 @@
                 <h3>Drill 089: Pedal, Plant & Track</h3>
               </div>
               <div class="card-diagram-img-wrap">
-                <img src="images/drill_089_db.png" alt="" loading="lazy" />
+                <picture>
+                  <source srcset="images/drill_089_db.webp" type="image/webp" />
+                  <img src="images/drill_089_db.png" alt="" width="540" height="300" loading="lazy" decoding="async" />
+                </picture>
               </div>
               <div class="card-diagram-caption">
                 <p><strong>Goal:</strong> Master the fluid backpedal transition, execute a sharp T-step plant on the QB release, and make an explosive break to contest the ball.</p>
@@ -436,7 +509,10 @@
                 <h3>Drill 126: Mirror Set & Strike</h3>
               </div>
               <div class="card-diagram-img-wrap">
-                <img src="images/drill_126_ol.png" alt="" loading="lazy" />
+                <picture>
+                  <source srcset="images/drill_126_ol.webp" type="image/webp" />
+                  <img src="images/drill_126_ol.png" alt="" width="540" height="300" loading="lazy" decoding="async" />
+                </picture>
               </div>
               <div class="card-diagram-caption">
                 <p><strong>Goal:</strong> Perfect kick-slide pass protection, maintain low leverage, and deliver explosive inside hand strikes within the contact window.</p>
@@ -449,7 +525,10 @@
                 <h3>Drill 158: One-Cut Lane Burst</h3>
               </div>
               <div class="card-diagram-img-wrap">
-                <img src="images/drill_158_rb.png" alt="" loading="lazy" />
+                <picture>
+                  <source srcset="images/drill_158_rb.webp" type="image/webp" />
+                  <img src="images/drill_158_rb.png" alt="" width="540" height="300" loading="lazy" decoding="async" />
+                </picture>
               </div>
               <div class="card-diagram-caption">
                 <p><strong>Goal:</strong> Read defensive gap leverage, execute an aggressive one-cut move into the open running lane, and burst downhill with ball security.</p>
@@ -462,7 +541,10 @@
                 <h3>Drill 173: Ladder Burst to Weave</h3>
               </div>
               <div class="card-diagram-img-wrap">
-                <img src="images/drill_173_saq.png" alt="" loading="lazy" />
+                <picture>
+                  <source srcset="images/drill_173_saq.webp" type="image/webp" />
+                  <img src="images/drill_173_saq.png" alt="" width="540" height="300" loading="lazy" decoding="async" />
+                </picture>
               </div>
               <div class="card-diagram-caption">
                 <p><strong>Goal:</strong> Build rapid foot frequency through the agility ladder, stay low through tight cone weave angles, and explode into full sprinting speed.</p>
@@ -492,30 +574,54 @@
             
             <!-- 4 Original Testimonial Cards -->
             <div class="marquee-card-testimonial">
-              <img src="images/testimonial_1.png" alt="Coach Testimonial: Drill breakdowns by situation" loading="eager" />
+              <picture>
+                <source srcset="images/testimonial_1.webp" type="image/webp" />
+                <img src="images/testimonial_1.png" alt="Coach Testimonial: Drill breakdowns by situation" width="340" height="450" loading="lazy" decoding="async" />
+              </picture>
             </div>
             <div class="marquee-card-testimonial">
-              <img src="images/testimonial_2.png" alt="Coach Testimonial: Special teams and punt cover drills" loading="eager" />
+              <picture>
+                <source srcset="images/testimonial_2.webp" type="image/webp" />
+                <img src="images/testimonial_2.png" alt="Coach Testimonial: Special teams and punt cover drills" width="340" height="450" loading="lazy" decoding="async" />
+              </picture>
             </div>
             <div class="marquee-card-testimonial">
-              <img src="images/testimonial_3.png" alt="Coach Testimonial: Cover 3 and nickel defense install" loading="eager" />
+              <picture>
+                <source srcset="images/testimonial_3.webp" type="image/webp" />
+                <img src="images/testimonial_3.png" alt="Coach Testimonial: Cover 3 and nickel defense install" width="340" height="450" loading="lazy" decoding="async" />
+              </picture>
             </div>
             <div class="marquee-card-testimonial">
-              <img src="images/testimonial_4.png" alt="Coach Testimonial: Red zone and goal line drills" loading="eager" />
+              <picture>
+                <source srcset="images/testimonial_4.webp" type="image/webp" />
+                <img src="images/testimonial_4.png" alt="Coach Testimonial: Red zone and goal line drills" width="340" height="450" loading="lazy" decoding="async" />
+              </picture>
             </div>
 
             <!-- Duplicated 4 Cards for 100% Seamless Infinite Loop -->
             <div class="marquee-card-testimonial" aria-hidden="true">
-              <img src="images/testimonial_1.png" alt="" loading="lazy" />
+              <picture>
+                <source srcset="images/testimonial_1.webp" type="image/webp" />
+                <img src="images/testimonial_1.png" alt="" width="340" height="450" loading="lazy" decoding="async" />
+              </picture>
             </div>
             <div class="marquee-card-testimonial" aria-hidden="true">
-              <img src="images/testimonial_2.png" alt="" loading="lazy" />
+              <picture>
+                <source srcset="images/testimonial_2.webp" type="image/webp" />
+                <img src="images/testimonial_2.png" alt="" width="340" height="450" loading="lazy" decoding="async" />
+              </picture>
             </div>
             <div class="marquee-card-testimonial" aria-hidden="true">
-              <img src="images/testimonial_3.png" alt="" loading="lazy" />
+              <picture>
+                <source srcset="images/testimonial_3.webp" type="image/webp" />
+                <img src="images/testimonial_3.png" alt="" width="340" height="450" loading="lazy" decoding="async" />
+              </picture>
             </div>
             <div class="marquee-card-testimonial" aria-hidden="true">
-              <img src="images/testimonial_4.png" alt="" loading="lazy" />
+              <picture>
+                <source srcset="images/testimonial_4.webp" type="image/webp" />
+                <img src="images/testimonial_4.png" alt="" width="340" height="450" loading="lazy" decoding="async" />
+              </picture>
             </div>
 
           </div>
