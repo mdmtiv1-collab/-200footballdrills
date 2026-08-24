@@ -161,12 +161,6 @@ body {
   line-height: 1.6;
 }
 
-/* Performance: render content visibility for off-screen sections */
-#inside, #benefits, #bonuses, #offer, #examples, #testimonials, #guarantee, #faq {
-  content-visibility: auto;
-  contain-intrinsic-size: 1px 750px;
-}
-
 /* Hero Media Display */
 .hero-media {
   max-width: 820px;
@@ -300,6 +294,7 @@ section {
   width: 100%;
   position: relative;
   padding: 10px 0 20px;
+  contain: paint;
 }
 
 .marquee-track {
@@ -308,6 +303,12 @@ section {
   width: max-content;
   animation: scrollMarquee 58s linear infinite;
   will-change: transform;
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  perspective: 1000px;
+  -webkit-perspective: 1000px;
   user-select: none;
 }
 
@@ -317,12 +318,14 @@ section {
 }
 
 @keyframes scrollMarquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
 }
 
 .marquee-card {
   flex: 0 0 310px;
+  width: 310px;
+  flex-shrink: 0;
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: 0 16px 36px rgba(1, 51, 105, 0.16);
@@ -331,12 +334,20 @@ section {
   transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s ease, box-shadow 0.3s ease;
   cursor: default;
   user-select: none;
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
 }
 
 .marquee-card:hover {
-  transform: translateY(-4px);
+  transform: translate3d(0, -4px, 0);
   border-color: var(--nfl-red);
   box-shadow: 0 20px 40px rgba(213, 10, 10, 0.3);
+}
+
+.marquee-card picture {
+  display: block;
+  width: 100%;
 }
 
 .marquee-card img {
@@ -791,11 +802,19 @@ section {
   width: max-content;
   animation: scrollMarquee 85s linear infinite;
   will-change: transform;
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  perspective: 1000px;
+  -webkit-perspective: 1000px;
   user-select: none;
 }
 
 .marquee-card-diagram {
   flex: 0 0 540px;
+  width: 540px;
+  flex-shrink: 0;
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: 0 16px 36px rgba(1, 51, 105, 0.14);
@@ -807,10 +826,13 @@ section {
   display: flex;
   flex-direction: column;
   user-select: none;
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
 }
 
 .marquee-card-diagram:hover {
-  transform: translateY(-4px);
+  transform: translate3d(0, -4px, 0);
   border-top-color: var(--nfl-red);
   box-shadow: 0 20px 40px rgba(213, 10, 10, 0.22);
 }
@@ -846,6 +868,11 @@ section {
   user-select: none;
 }
 
+.card-diagram-img-wrap picture {
+  display: block;
+  width: 100%;
+}
+
 .card-diagram-img-wrap img {
   width: 100%;
   height: auto;
@@ -873,6 +900,7 @@ section {
 @media (max-width: 768px) {
   .marquee-card-diagram {
     flex: 0 0 330px;
+    width: 330px;
   }
   .card-diagram-header {
     padding: 12px 14px 8px;
@@ -899,11 +927,19 @@ section {
   width: max-content;
   animation: scrollMarquee 70s linear infinite;
   will-change: transform;
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  perspective: 1000px;
+  -webkit-perspective: 1000px;
   user-select: none;
 }
 
 .marquee-card-testimonial {
   flex: 0 0 340px;
+  width: 340px;
+  flex-shrink: 0;
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: 0 14px 32px rgba(1, 51, 105, 0.12);
@@ -912,12 +948,20 @@ section {
   transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   cursor: default;
   user-select: none;
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
 }
 
 .marquee-card-testimonial:hover {
-  transform: translateY(-4px);
+  transform: translate3d(0, -4px, 0);
   border-color: var(--nfl-blue);
   box-shadow: 0 20px 40px rgba(1, 51, 105, 0.2);
+}
+
+.marquee-card-testimonial picture {
+  display: block;
+  width: 100%;
 }
 
 .marquee-card-testimonial img {
@@ -933,6 +977,7 @@ section {
 @media (max-width: 768px) {
   .marquee-card-testimonial {
     flex: 0 0 280px;
+    width: 280px;
   }
   .marquee-track-testimonials {
     gap: 16px;
