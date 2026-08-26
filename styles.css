@@ -919,52 +919,98 @@ section {
 }
 
 /* ==========================================================================
-   7ª SEÇÃO: DEPOIMENTOS (INFINITE MARQUEE CAROUSEL)
+   7ª SEÇÃO: DEPOIMENTOS (SLIDER INTERATIVO COM SETAS DE NAVEGAÇÃO)
    ========================================================================== */
-.marquee-track-testimonials {
+.testimonials-slider-wrapper {
+  position: relative;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 54px;
+}
+
+.t-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--nfl-blue);
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  box-shadow: 0 6px 20px rgba(1, 51, 105, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  outline: none;
+}
+
+.t-prev-btn {
+  left: 0;
+}
+
+.t-next-btn {
+  right: 0;
+}
+
+.t-nav-btn:hover {
+  background: var(--nfl-red);
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 8px 25px rgba(213, 10, 10, 0.45);
+}
+
+.t-nav-btn:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.testimonials-viewport {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 10px 4px 20px;
+}
+
+.testimonials-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.testimonials-cards-track {
   display: flex;
   gap: 24px;
   width: max-content;
-  animation: scrollMarquee 70s linear infinite;
-  will-change: transform;
-  transform: translate3d(0, 0, 0);
-  -webkit-transform: translate3d(0, 0, 0);
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  perspective: 1000px;
-  -webkit-perspective: 1000px;
-  user-select: none;
 }
 
-.marquee-card-testimonial {
-  flex: 0 0 340px;
-  width: 340px;
-  flex-shrink: 0;
+.t-slide-card {
+  flex: 0 0 330px;
+  width: 330px;
+  scroll-snap-align: start;
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: 0 14px 32px rgba(1, 51, 105, 0.12);
   border: 1px solid var(--border-color);
   background: #ffffff;
   transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-  cursor: default;
   user-select: none;
-  transform: translate3d(0, 0, 0);
-  -webkit-transform: translate3d(0, 0, 0);
-  backface-visibility: hidden;
 }
 
-.marquee-card-testimonial:hover {
-  transform: translate3d(0, -4px, 0);
+.t-slide-card:hover {
+  transform: translateY(-4px);
   border-color: var(--nfl-blue);
   box-shadow: 0 20px 40px rgba(1, 51, 105, 0.2);
 }
 
-.marquee-card-testimonial picture {
+.t-slide-card picture {
   display: block;
   width: 100%;
 }
 
-.marquee-card-testimonial img {
+.t-slide-card img {
   width: 100%;
   height: auto;
   display: block;
@@ -974,14 +1020,44 @@ section {
   user-select: none;
 }
 
+/* Dots Indicator */
+.t-dots-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.t-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #cbd5e1;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.t-dot.active {
+  width: 28px;
+  border-radius: 999px;
+  background: var(--nfl-red);
+}
+
 @media (max-width: 768px) {
-  .marquee-card-testimonial {
-    flex: 0 0 280px;
-    width: 280px;
+  .testimonials-slider-wrapper {
+    padding: 0 38px;
   }
-  .marquee-track-testimonials {
+  .t-nav-btn {
+    width: 38px;
+    height: 38px;
+  }
+  .t-slide-card {
+    flex: 0 0 270px;
+    width: 270px;
+  }
+  .testimonials-cards-track {
     gap: 16px;
-    animation-duration: 55s;
   }
 }
 

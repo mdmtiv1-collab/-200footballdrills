@@ -135,7 +135,66 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(showToast, 20000);
   })();
 
+  // 5. TESTIMONIALS SLIDER WITH CLICKABLE ARROWS & DOTS
+  (function initTestimonialsSlider() {
+    const viewport = document.getElementById('tViewport');
+    const track = document.getElementById('tTrack');
+    const prevBtn = document.getElementById('tPrevBtn');
+    const nextBtn = document.getElementById('tNextBtn');
+    const dots = document.querySelectorAll('.t-dot');
 
+    if (!viewport || !track || !prevBtn || !nextBtn) return;
+
+    const cards = track.querySelectorAll('.t-slide-card');
+    if (!cards.length) return;
+
+    function getCardWidth() {
+      const card = cards[0];
+      const gap = parseInt(window.getComputedStyle(track).gap || '24', 10);
+      return card.offsetWidth + gap;
+    }
+
+    function updateActiveDot() {
+      const scrollLeft = viewport.scrollLeft;
+      const cardWidth = getCardWidth();
+      const activeIdx = Math.min(
+        cards.length - 1,
+        Math.round(scrollLeft / cardWidth)
+      );
+
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === activeIdx);
+      });
+    }
+
+    prevBtn.addEventListener('click', () => {
+      const cardWidth = getCardWidth();
+      if (viewport.scrollLeft <= 10) {
+        viewport.scrollTo({ left: viewport.scrollWidth, behavior: 'smooth' });
+      } else {
+        viewport.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+      }
+    });
+
+    nextBtn.addEventListener('click', () => {
+      const cardWidth = getCardWidth();
+      const maxScroll = viewport.scrollWidth - viewport.clientWidth - 10;
+      if (viewport.scrollLeft >= maxScroll) {
+        viewport.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        viewport.scrollBy({ left: cardWidth, behavior: 'smooth' });
+      }
+    });
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        const cardWidth = getCardWidth();
+        viewport.scrollTo({ left: index * cardWidth, behavior: 'smooth' });
+      });
+    });
+
+    viewport.addEventListener('scroll', updateActiveDot, { passive: true });
+  })();
 
   // 6. UPSELL MODAL POPUP ($14.90 SPECIAL UPGRADE OFFER)
   (function initUpsellModal() {
