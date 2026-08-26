@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(showToast, 20000);
   })();
 
-  // 5. TESTIMONIALS SLIDER WITH CLICKABLE ARROWS & DOTS
+  // 5. TESTIMONIALS SLIDER WITH CONTINUOUS INFINITE CLICKABLE ARROWS
   (function initTestimonialsSlider() {
     const viewport = document.getElementById('tViewport');
     const track = document.getElementById('tTrack');
@@ -145,55 +145,107 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!viewport || !track || !prevBtn || !nextBtn) return;
 
-    const cards = track.querySelectorAll('.t-slide-card');
-    if (!cards.length) return;
+    const originalCards = Array.from(track.querySelectorAll('.t-slide-card'));
+    const totalOriginal = originalCards.length;
+    if (totalOriginal === 0) return;
 
-    function getCardWidth() {
-      const card = cards[0];
+    // Clone cards before and after for true seamless infinite loop
+    originalCards.forEach(card => {
+      const cloneBefore = card.cloneNode(true);
+      cloneBefore.setAttribute('aria-hidden', 'true');
+      track.insertBefore(cloneBefore, track.firstChild);
+    });
+
+    originalCards.forEach(card => {
+      const cloneAfter = card.cloneNode(true);
+      cloneAfter.setAttribute('aria-hidden', 'true');
+      track.appendChild(cloneAfter);
+    });
+
+    let currentIndex = totalOriginal; // start at the first original card (index 4)
+    let isTransitioning = false;
+
+    function getCardStep() {
+      const card = track.querySelector('.t-slide-card');
       const gap = parseInt(window.getComputedStyle(track).gap || '24', 10);
-      return card.offsetWidth + gap;
+      return (card ? card.offsetWidth : 330) + gap;
     }
 
-    function updateActiveDot() {
-      const scrollLeft = viewport.scrollLeft;
-      const cardWidth = getCardWidth();
-      const activeIdx = Math.min(
-        cards.length - 1,
-        Math.round(scrollLeft / cardWidth)
-      );
+    function updateTrack(animated = true) {
+      const step = getCardStep();
+      if (animated) {
+        track.style.transition = 'transform 0.42s cubic-bezier(0.25, 1, 0.5, 1)';
+        isTransitioning = true;
+      } else {
+        track.style.transition = 'none';
+      }
+      track.style.transform = `translate3d(-${currentIndex * step}px, 0, 0)`;
 
+      // Update active dot
+      const realIndex = ((currentIndex - totalOriginal) % totalOriginal + totalOriginal) % totalOriginal;
       dots.forEach((dot, i) => {
-        dot.classList.toggle('active', i === activeIdx);
+        dot.classList.toggle('active', i === realIndex);
       });
     }
 
-    prevBtn.addEventListener('click', () => {
-      const cardWidth = getCardWidth();
-      if (viewport.scrollLeft <= 10) {
-        viewport.scrollTo({ left: viewport.scrollWidth, behavior: 'smooth' });
-      } else {
-        viewport.scrollBy({ left: -cardWidth, behavior: 'smooth' });
-      }
-    });
+    function nextSlide() {
+      if (isTransitioning) return;
+      currentIndex++;
+      updateTrack(true);
+    }
 
-    nextBtn.addEventListener('click', () => {
-      const cardWidth = getCardWidth();
-      const maxScroll = viewport.scrollWidth - viewport.clientWidth - 10;
-      if (viewport.scrollLeft >= maxScroll) {
-        viewport.scrollTo({ left: 0, behavior: 'smooth' });
-      } else {
-        viewport.scrollBy({ left: cardWidth, behavior: 'smooth' });
+    function prevSlide() {
+      if (isTransitioning) return;
+      currentIndex--;
+      updateTrack(true);
+    }
+
+    nextBtn.addEventListener('click', nextSlide);
+    prevBtn.addEventListener('click', prevSlide);
+
+    track.addEventListener('transitionend', () => {
+      isTransitioning = false;
+      // If we went past the end of the cloned middle set, silently snap back
+      if (currentIndex >= totalOriginal * 2) {
+        currentIndex -= totalOriginal;
+        updateTrack(false);
+      } else if (currentIndex < totalOriginal) {
+        currentIndex += totalOriginal;
+        updateTrack(false);
       }
     });
 
     dots.forEach((dot, index) => {
       dot.addEventListener('click', () => {
-        const cardWidth = getCardWidth();
-        viewport.scrollTo({ left: index * cardWidth, behavior: 'smooth' });
+        if (isTransitioning) return;
+        currentIndex = totalOriginal + index;
+        updateTrack(true);
       });
     });
 
-    viewport.addEventListener('scroll', updateActiveDot, { passive: true });
+    // Touch swipe support for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    viewport.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    viewport.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      const diff = touchStartX - touchEndX;
+      if (Math.abs(diff) > 40) {
+        if (diff > 0) nextSlide();
+        else prevSlide();
+      }
+    }, { passive: true });
+
+    window.addEventListener('resize', () => {
+      updateTrack(false);
+    });
+
+    // Initial position
+    updateTrack(false);
   })();
 
   // 6. UPSELL MODAL POPUP ($14.90 SPECIAL UPGRADE OFFER)

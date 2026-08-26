@@ -967,29 +967,26 @@ section {
 }
 
 .testimonials-viewport {
-  overflow-x: auto;
-  overflow-y: hidden;
-  scroll-behavior: smooth;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  padding: 10px 4px 20px;
-}
-
-.testimonials-viewport::-webkit-scrollbar {
-  display: none;
+  overflow: hidden;
+  width: 100%;
+  padding: 10px 0 20px;
+  position: relative;
+  touch-action: pan-y;
 }
 
 .testimonials-cards-track {
   display: flex;
   gap: 24px;
   width: max-content;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
 }
 
 .t-slide-card {
   flex: 0 0 330px;
   width: 330px;
-  scroll-snap-align: start;
+  flex-shrink: 0;
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: 0 14px 32px rgba(1, 51, 105, 0.12);
