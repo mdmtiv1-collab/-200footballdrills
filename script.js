@@ -289,4 +289,37 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   })();
 
+  // 7. PASS ALL UTMS AUTOMATICALLY THROUGH ALL CHECKOUT LINKS & FUNNEL
+  (function preserveAllUTMs() {
+    function syncCheckoutLinks() {
+      if (!window.location.search) return;
+      const currentSearchParams = new URLSearchParams(window.location.search);
+      const links = document.querySelectorAll('a[href*="go.centerpag.com"]');
+      links.forEach(link => {
+        try {
+          const url = new URL(link.href, window.location.origin);
+          currentSearchParams.forEach((val, key) => {
+            url.searchParams.set(key, val);
+          });
+          link.href = url.toString();
+        } catch (e) {}
+      });
+    }
+
+    syncCheckoutLinks();
+    document.addEventListener('click', (e) => {
+      const targetLink = e.target.closest('a[href*="go.centerpag.com"]');
+      if (targetLink && window.location.search) {
+        try {
+          const url = new URL(targetLink.href, window.location.origin);
+          const currentSearchParams = new URLSearchParams(window.location.search);
+          currentSearchParams.forEach((val, key) => {
+            url.searchParams.set(key, val);
+          });
+          targetLink.href = url.toString();
+        } catch (err) {}
+      }
+    });
+  })();
+
 });
